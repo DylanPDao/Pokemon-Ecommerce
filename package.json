@@ -5,7 +5,7 @@
   "description": "A full stack JavaScript solo project.",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=production node server/server.js",
+    "start": "ts-node-esm server/server.ts",
     "build": "npm run build --prefix client",
     "db:import": "sh database/import.sh",
     "dev:db": "pgweb --db=`awk 'BEGIN { FS = \"/\" } ; /DATABASE_URL=/ {print $NF}' server/.env`",
@@ -15,10 +15,17 @@
     "install:client": "npm install --prefix client",
     "install:server": "npm install --prefix server",
     "install:env": "test -f server/.env || cp server/.env.example server/.env",
-    "postinstall": "npm-run-all --parallel install:*",
-    "prepare": "husky install"
+    "postinstall": "run-s install:*",
+    "prepare": "husky install",
+    "prod:db:import": "sh database/prod-import.sh"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.2.5",
+    "@types/pg": "^8.10.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.0.0",
@@ -27,12 +34,22 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
+    "jsdoc": "^4.0.2",
     "lint-staged": "^13.2.1",
     "markuplint": "^3.7.0",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.24",
+    "postcss-loader": "^7.3.2",
+    "postcss-preset-env": "^8.4.2",
     "prettier": "^2.8.7",
     "stylelint": "^15.4.0",
     "stylelint-config-recommended": "^11.0.0",
-    "stylelint-config-standard": "^32.0.0"
+    "stylelint-config-standard": "^32.0.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "stripe": "^12.9.0",
+    "ts-node": "^10.9.1"
   }
 }
