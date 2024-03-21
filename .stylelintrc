@@ -1,24 +1,3 @@
 {
-  "extends": ["stylelint-config-recommended", "stylelint-config-standard"],
-  "rules": {
-    "alpha-value-notation": null,
-    "color-function-notation": null,
-    "declaration-block-no-redundant-longhand-properties": null,
-    "keyframes-name-pattern": null,
-    "no-empty-source": null,
-    "selector-class-pattern": null,
-    "at-rule-no-unknown": [
-      true,
-      {
-        "ignoreAtRules": [
-          "extends",
-          "apply",
-          "tailwind",
-          "components",
-          "utilities",
-          "screen"
-        ]
-      }
-    ]
-  }
+  "extends": "./node_modules/@learningfuze/lfz-config/config/stylelintrc.json"
 }

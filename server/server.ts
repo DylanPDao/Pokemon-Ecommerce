@@ -27,7 +27,7 @@ const app = express();
 app.use(express.json());
 
 // Create paths for static directories
-const reactStaticDir = new URL('../client/build', import.meta.url).pathname;
+const reactStaticDir = new URL('../dist/build', import.meta.url).pathname;
 const uploadsStaticDir = new URL('public', import.meta.url).pathname;
 
 // Static directory for file uploads server/public/
@@ -281,7 +281,6 @@ app.post('/add-to-cart', async (req, res, next) => {
           throw new ClientError(401, 'Did not add to cart');
         }
         res.status(201).json(cartItem);
-        return;
       } else {
         sql = `
         insert into "cartItems" ("name", "price", "productId", "quantity", "cartId", "imageUrl", "priceId")
@@ -368,7 +367,6 @@ app.patch('/api/cart/update', async (req, res, next) => {
         throw new ClientError(401, 'invalid product');
       }
       res.sendStatus(204);
-      return;
     } else {
       const sql = `
       update "cartItems"
