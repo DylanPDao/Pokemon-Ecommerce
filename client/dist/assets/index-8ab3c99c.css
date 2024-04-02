@@ -1,16 +1,15 @@
 /* stylelint-disable value-keyword-case */
 /* stylelint-disable keyframe-selector-notation */
-/* stylelint-disable property-no-vendor-prefix */
-/* stylelint-disable value-no-vendor-prefix */
-/* stylelint-disable number-max-precision */
 /* stylelint-disable media-feature-range-notation */
 /* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable number-max-precision */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable selector-attribute-quotes */
 /* stylelint-disable font-family-name-quotes */
+/* stylelint-disable property-no-vendor-prefix */
 /* stylelint-disable selector-pseudo-element-colon-notation */
-/* stylelint-disable-next-line CssSyntaxError */
-/* stylelint-disable-next-line length-zero-no-unit */
 *,
 :before,
 :after {
