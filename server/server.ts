@@ -16,8 +16,11 @@ const stripe = new Stripe(`${process.env.STRIPE_KEY}`, {
 const tokenSecret = process.env.TOKEN_SECRET;
 if (!tokenSecret) throw new Error('token secret not defined');
 
+const connectionString =
+  process.env.DATABASE_URL ||
+  `postgresql://${process.env.RDS_USERNAME}:${process.env.RDS_PASSWORD}@${process.env.RDS_HOSTNAME}:${process.env.RDS_PORT}/${process.env.RDS_DB_NAME}`;
 const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString,
   ssl: {
     rejectUnauthorized: false,
   },
@@ -27,7 +30,7 @@ const app = express();
 app.use(express.json());
 
 // Create paths for static directories
-const reactStaticDir = new URL('../dist/build', import.meta.url).pathname;
+const reactStaticDir = new URL('../client/dist', import.meta.url).pathname;
 const uploadsStaticDir = new URL('public', import.meta.url).pathname;
 
 // Static directory for file uploads server/public/
